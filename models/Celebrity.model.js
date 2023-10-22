@@ -11,6 +11,9 @@ const celebritiesSchema = new Schema(
         },
         catchPhrase: {
             type: String
+        },
+        movies: {
+            type: [{ type: Schema.Types.ObjectId, ref: 'Movie' }]
         }
 
     }

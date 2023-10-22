@@ -1,0 +1,22 @@
+<h2>Name: {{name}}</h2>
+
+<h3>Occupation: {{occupation}}</h3>
+
+<h4>CatchPhrase: {{catchPhrase}}</h4>
+
+<h4>Movies:</h4>
+{{#each movies}}
+    <p>Title: {{title}}</p>
+     <p>Genre: {{genre}}</p>
+     
+{{/each}}
+
+<a href="/celebrities/{{_id}}/edit">Edit Celebrity</a>
+ <form action="/celebrities/{{_id}}/delete" method="POST">
+        <label for="first-name-input">Delete this Celebrity:</label>
+        <input id="first-name-input" type="text" name="name" value="{{name}}"/>
+
+    
+        
+        <button type="submit">DELETE</button>
+    </form>

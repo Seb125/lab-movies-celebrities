@@ -13,7 +13,12 @@
         <label for="catchPhrase">catchPhrase:</label>
         <input id="catchPhrase" type="text" name="catchPhrase" />
 
-    
+         <label for="movies">Movies:</label>
+        <select id="movies" name="movies" multiple>
+            {{#each movies}}
+                <option value="{{_id}}">{{title}}</option>
+            {{/each}}
+        </select>
         
-        <button type="submit">Save celebrity</button>
+        <button type="submit">Save Celebrity</button>
     </form>

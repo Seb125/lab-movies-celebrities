@@ -28,7 +28,20 @@ router.post('/create', (req, res) => {
         
         try {
             const myMovie = req.body;
-            Movie.create(myMovie);
+            const movie = await Movie.create(myMovie);
+            
+            async function pushMovies() {
+                if (Array.isArray(myMovie.cast)) {
+                   for(let i = 0; i<myMovie.cast.length; i++) {
+                        const cel = await Celebrity.findByIdAndUpdate(myMovie.cast[i], { $push: { movies: movie._id } });
+                   }
+                } else {
+                    const cel = await Celebrity.findByIdAndUpdate(myMovie.cast, { $push: { movies: movie._id } });
+                }
+        }
+            const push = await pushMovies();
+
+
             res.redirect('/movies');
         } catch(err) {
             console.log(err);
