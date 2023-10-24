@@ -1,5 +1,5 @@
-<h1 class="bg-blue-500 py-4">{{title}}</h1>
-<p class="text-3xl font-bold underline">Welcome to {{title}}</p>
+{{!-- <h1 class="text-3xl font-bold underline">{{title}}</h1>
+<p>Welcome to {{title}}</p>
 
 <ul >
 
@@ -11,4 +11,22 @@
     
      <li><a href="/movies">See all movies</a></li>
 
-</ul>
+</ul> --}}
+
+
+<div class="bg-gray-100">
+    <header class="bg-blue-500 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-white text-2xl font-semibold">{{title}}</h1>
+            <nav class="space-x-4">
+                <a href="/celebrities/create" class="text-white hover:underline">Create Celebrity</a>
+                <a href="/celebrities" class="text-white hover:underline">See all celebrities</a>
+                <a href="/movies/create" class="text-white hover:underline">Create Movie</a>
+                <a href="/movies" class="text-white hover:underline">See all movies</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- The rest of your homepage content goes here -->
+
+</div>

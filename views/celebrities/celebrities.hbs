@@ -1,8 +1,35 @@
-<h2>Celebrities</h2>
+{{!-- <h2>Celebrities</h2>
 
 {{#each celebrities}}
     <h3>{{name}}</h3>
     <a href="/celebrities/{{_id}}">See details</a>
 
 
-{{/each}}
+{{/each}} --}}
+
+
+
+<header class="bg-blue-500 py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-white text-3xl font-semibold">Celebrities</h1>
+        </div>
+    </header>
+
+
+<main class="container mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+
+    {{#each celebrities}}
+
+        <div class="bg-white p-4 rounded-lg shadow-md">
+                
+                <h2 class="text-xl font-semibold mt-2">{{name}}</h2>
+                <p class="text-gray-600"><a href="/celebrities/{{_id}}">See details</a></p>
+            </div>
+
+
+
+    {{/each}}
+
+
+</main>

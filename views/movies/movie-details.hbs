@@ -1,4 +1,4 @@
-<h2>Title: {{title}}</h2>
+{{!-- <h2>Title: {{title}}</h2>
 
 <h3>Genre: {{genre}}</h3>
 
@@ -20,3 +20,39 @@
         
         <button type="submit">DELETE</button>
     </form>
+ --}}
+
+
+
+
+
+    <div class="bg-gray-100">
+    <header class="bg-blue-500 py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-white text-3xl font-semibold">{{title}} Details</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
+       
+        <h2 class="text-2xl font-semibold mt-4">Genre: {{genre}}</h2>
+        <p class="text-gray-600 mt-2">Plot: {{plot}}</p>
+       <h4>The Cast:</h4>
+        
+        {{#each cast}}
+            <p>Name: {{name}}</p>
+            <p>Occupation: {{occupation}}</p>
+            <p>Catch Phrase: {{catchPhrase}}</p>
+     
+        {{/each}}
+        <!-- Buttons -->
+        <div class="mt-4 flex space-x-4">
+            <a href="/movies/{{_id}}/edit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Edit Movie</a>
+            <form action="/movies/{{_id}}/delete" method="POST">
+                <label for="first-name-input" class="text-gray-600">Delete this Movie:</label>
+                <input id="first-name-input" type="text" name="name" value="{{title}}" class="border border-gray-400 rounded-md py-2 px-3"/>
+                <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" type="submit">DELETE</button>
+            </form>
+        </div>
+    </main>
+</div>

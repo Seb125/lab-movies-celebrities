@@ -34,7 +34,7 @@ app.use('/celebrities', celeb);
 
 // 👇 Start handling routes here
 const movies = require('./routes/movies.routes');
-app.use('/movies', movies);
+app.use('/movies', movies); // app.use(*) * is always middleware
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

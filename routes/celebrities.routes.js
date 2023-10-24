@@ -6,8 +6,8 @@ const Movie = require('../models/Movie.model.js');
 // all your routes here
 
 
-router.get('/create', (req, res) => {
-    const getMovies = async (req, res) => {
+router.get('/create', async (req, res) => {
+   
         try {
             const myMovies = await Movie.find();
             
@@ -15,9 +15,9 @@ router.get('/create', (req, res) => {
         } catch(err) {
             console.log(err)
         }
-    }
+    
 
-    getMovies(req, res);
+    
     
 })
 
