@@ -1,19 +1,42 @@
-<h2>Edit Movie: {{title}}</h2>
 
 
-<form action="/movies/{{_id}}" method="POST">
-        <label for="genre">Genre:</label>
-        <input id="genre" type="text" name="genre" value="{{genre}}"/>
 
-        <label for="plot">Plot:</label>
-        <input id="plot" type="text" name="plot" value="{{plot}}"/>
+
+<div class="bg-gray-100">
+<header class="bg-blue-500 py-4">
+    <div class="container mx-auto text-center">
+        <h1 class="text-white text-3xl font-semibold">Edit Movie: {{movie.title}}</h1>
+    </div>
+</header>
+
+<main class="container mx-auto mt-8 bg-white p-6 rounded-lg shadow-md">
     
-        <label for="cast">Cast:</label>
-        <select id="cast" name="cast" multiple>
-            {{#each cast}}
+    
+    <div class="mt-4 flex space-x-4">
+        
+       
+        <form action="/movies/{{movie._id}}" method="POST">
+        <label for="genre" class="text-gray-600">Genre:</label>
+        <input id="genre" type="text" name="genre" class="border border-gray-400 rounded-md py-2 px-3" value="{{movie.genre}}"/>
+
+        <label for="plot" class="text-gray-600">Plot:</label>
+        <input id="plot" type="text" name="plot" class="border border-gray-400 rounded-md py-2 px-3" value="{{movie.plot}}"/>
+    
+        <label for="cast" class="text-gray-600">Cast:</label>
+        <select id="cast" name="cast" class="border border-gray-400 rounded-md py-2 px-3" multiple>  
+            {{!-- I am missing here all Celebs I  could choose --}}
+            {{#each movie.cast}} 
+                <option value="{{_id}}" selected>{{name}}</option>
+            {{/each}}
+
+            {{#each notInCast}}
                 <option value="{{_id}}">{{name}}</option>
             {{/each}}
+
         </select>
         
-        <button type="submit">UPDATE</button>
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">UPDATE</button>
     </form>
+    </div>
+</main>
+</div>

@@ -107,10 +107,24 @@ router.post('/:id/delete', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     const editMovie = async (req, res) => {
         try {
+            const allCelebs = await Celebrity.find();
             const movie =  await Movie.findById(req.params.id).populate('cast');
             
-            //res.send(movie);
-            res.render('movies/edit-movie', movie);
+            let notInCast = [];
+            let castIDs = [];
+
+            movie.cast.forEach((cast) => {
+                castIDs.push(cast._id);
+            })
+        
+
+            allCelebs.forEach((celeb) => {
+                if (!castIDs.some(id => id.equals(celeb._id))) {
+                    notInCast.push(celeb);
+                }
+            })
+
+            res.render('movies/edit-movie', {movie: movie, notInCast: notInCast});
             
 
         } catch(err) {

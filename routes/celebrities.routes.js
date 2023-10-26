@@ -95,10 +95,23 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     const editCelebrity = async (req, res) => {
         try {
+            const allMovies = await Movie.find();
             const celebrity =  await Celebrity.findById(req.params.id).populate('movies');
             
-            //res.send(movie);
-            res.render('celebrities/edit-celebrity', celebrity);
+            let notInCast = [];
+            let movieIDs = [];
+
+            celebrity.movies.forEach((movie) => {
+                movieIDs.push(movie._id);
+            })
+        
+            allMovies.forEach((movie) => {
+                if (!movieIDs.some(id => id.equals(movie._id))) {
+                    notInCast.push(movie);
+                }
+            })
+            console.log(notInCast)
+            res.render('celebrities/edit-celebrity', {celebrity: celebrity, notInCast: notInCast});
             
 
         } catch(err) {
